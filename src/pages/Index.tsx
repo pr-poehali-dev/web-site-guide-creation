@@ -380,7 +380,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </Badge>
                     ))}
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                    onClick={() => scrollToSection('examples')}
+                  >
                     Начать проект
                     <Icon name="ArrowRight" className="ml-2" size={16} />
                   </Button>
@@ -418,7 +421,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-pink-50 transition-colors">
+                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-pink-900/20 transition-colors cursor-pointer" onClick={() => scrollToSection('examples')}>
                       <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
                         <Icon name="Palette" className="text-pink-600" size={20} />
                       </div>
@@ -428,7 +431,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-orange-50 transition-colors">
+                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-orange-900/20 transition-colors cursor-pointer" onClick={() => scrollToSection('demo')}>
                       <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
                         <Icon name="Zap" className="text-orange-600" size={20} />
                       </div>
@@ -440,7 +443,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-blue-50 transition-colors">
+                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-blue-900/20 transition-colors cursor-pointer" onClick={() => scrollToSection('resources')}>
                       <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
                         <Icon name="Smartphone" className="text-blue-600" size={20} />
                       </div>
@@ -450,7 +453,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-green-50 transition-colors">
+                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-green-900/20 transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>
                       <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                         <Icon name="Globe" className="text-green-600" size={20} />
                       </div>
@@ -460,7 +463,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-purple-50 transition-colors">
+                    <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-purple-900/20 transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>
                       <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
                         <Icon name="Rocket" className="text-purple-600" size={20} />
                       </div>
@@ -499,7 +502,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 <Icon name="Rocket" className="mr-2" size={20} />
                 Начать обучение
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-8 py-6 backdrop-blur-sm">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-8 py-6 backdrop-blur-sm"
+                onClick={() => scrollToSection('contact')}
+              >
                 <Icon name="Mail" className="mr-2" size={20} />
                 Связаться с нами
               </Button>
@@ -523,28 +531,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             <div>
               <h4 className="font-semibold mb-4">Обучение</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">HTML основы</li>
-                <li className="hover:text-white transition-colors cursor-pointer">CSS стили</li>
-                <li className="hover:text-white transition-colors cursor-pointer">JavaScript</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Проекты</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('steps')}>HTML основы</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('steps')}>CSS стили</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('demo')}>JavaScript</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('projects')}>Проекты</li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Ресурсы</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">Документация</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Примеры кода</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Видеоуроки</li>
-                <li className="hover:text-white transition-colors cursor-pointer">FAQ</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('resources')}>Документация</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('examples')}>Примеры кода</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('demo')}>Видеоуроки</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>FAQ</li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Контакты</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white transition-colors cursor-pointer">О проекте</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Связаться</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Сообщество</li>
-                <li className="hover:text-white transition-colors cursor-pointer">Поддержка</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('resources')}>О проекте</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>Связаться</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>Сообщество</li>
+                <li className="hover:text-white transition-colors cursor-pointer" onClick={() => scrollToSection('contact')}>Поддержка</li>
               </ul>
             </div>
           </div>
