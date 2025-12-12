@@ -24,6 +24,13 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const copyCode = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(id);
@@ -82,7 +89,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     {
       number: '01',
       title: 'Структура HTML',
-      description: 'Создайте основу сайта с помощью HTML-тегов',
+      description: 'Создайте основу с помощью HTML-тегов',
       icon: 'FileCode',
       color: 'from-purple-500 to-pink-500'
     },
@@ -103,7 +110,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     {
       number: '04',
       title: 'Публикация',
-      description: 'Разместите сайт в интернете',
+      description: 'Разместите проект в интернете',
       icon: 'Rocket',
       color: 'from-blue-500 to-purple-500'
     }
@@ -134,7 +141,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-pink-950">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 opacity-90"></div>
@@ -157,11 +164,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
               Пошаговое руководство для начинающих разработчиков. От основ HTML до интерактивных проектов
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-6 animate-fade-in">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-white/90 text-lg px-8 py-6 shadow-2xl hover:scale-105 transition-transform">
+              <Button 
+                size="lg" 
+                className="bg-white text-purple-600 hover:bg-white/90 text-lg px-8 py-6 shadow-2xl hover:scale-105 transition-transform"
+                onClick={() => scrollToSection('steps')}
+              >
                 <Icon name="Play" className="mr-2" size={20} />
                 Начать обучение
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-8 py-6 backdrop-blur-sm">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-8 py-6 backdrop-blur-sm"
+                onClick={() => scrollToSection('examples')}
+              >
                 <Icon name="Code2" className="mr-2" size={20} />
                 Посмотреть примеры
               </Button>
@@ -169,18 +185,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-950 to-transparent"></div>
       </section>
 
       {/* Steps Section */}
-      <section className="py-20 fade-on-scroll">
+      <section id="steps" className="py-20 fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4 text-lg px-4 py-2">Пошаговое руководство</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Как создать сайт?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Следуй простым шагам и создай свой первый проект
             </p>
           </div>
@@ -204,30 +220,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </section>
 
       {/* Code Examples Section */}
-      <section className="py-20 bg-white/50 backdrop-blur-sm fade-on-scroll">
+      <section id="examples" className="py-20 bg-black/30 backdrop-blur-sm fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4 text-lg px-4 py-2">Примеры кода</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
               Изучай на практике
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Копируй код и экспериментируй прямо сейчас
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <Tabs defaultValue="html" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 h-14 bg-gradient-to-r from-purple-100 to-pink-100">
-                <TabsTrigger value="html" className="text-lg data-[state=active]:bg-white data-[state=active]:shadow-lg">
+              <TabsList className="grid w-full grid-cols-3 h-14 bg-gradient-to-r from-purple-900 to-pink-900">
+                <TabsTrigger value="html" className="text-lg data-[state=active]:bg-gray-800 data-[state=active]:text-white data-[state=active]:shadow-lg">
                   <Icon name="FileCode" className="mr-2" size={20} />
                   HTML
                 </TabsTrigger>
-                <TabsTrigger value="css" className="text-lg data-[state=active]:bg-white data-[state=active]:shadow-lg">
+                <TabsTrigger value="css" className="text-lg data-[state=active]:bg-gray-800 data-[state=active]:text-white data-[state=active]:shadow-lg">
                   <Icon name="Palette" className="mr-2" size={20} />
                   CSS
                 </TabsTrigger>
-                <TabsTrigger value="js" className="text-lg data-[state=active]:bg-white data-[state=active]:shadow-lg">
+                <TabsTrigger value="js" className="text-lg data-[state=active]:bg-gray-800 data-[state=active]:text-white data-[state=active]:shadow-lg">
                   <Icon name="Zap" className="mr-2" size={20} />
                   JavaScript
                 </TabsTrigger>
@@ -235,21 +251,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
               {Object.entries(codeExamples).map(([key, code]) => (
                 <TabsContent key={key} value={key}>
-                  <Card className="border-2 shadow-xl">
-                    <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 border-b flex flex-row items-center justify-between">
-                      <CardTitle className="text-lg">Пример {key.toUpperCase()}</CardTitle>
+                  <Card className="border-2 shadow-xl bg-gray-900 border-gray-700">
+                    <CardHeader className="bg-gradient-to-r from-gray-800 to-gray-900 border-b border-gray-700 flex flex-row items-center justify-between">
+                      <CardTitle className="text-lg text-white">Пример {key.toUpperCase()}</CardTitle>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => copyCode(code, key)}
-                        className="gap-2"
+                        className="gap-2 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white"
                       >
                         <Icon name={copiedCode === key ? "Check" : "Copy"} size={16} />
                         {copiedCode === key ? 'Скопировано!' : 'Копировать'}
                       </Button>
                     </CardHeader>
                     <CardContent className="p-0">
-                      <pre className="bg-gray-900 text-gray-100 p-6 overflow-x-auto rounded-b-lg">
+                      <pre className="bg-black text-gray-100 p-6 overflow-x-auto rounded-b-lg">
                         <code className="text-sm">{code}</code>
                       </pre>
                     </CardContent>
@@ -262,14 +278,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </section>
 
       {/* Interactive Demo Section */}
-      <section className="py-20 fade-on-scroll">
+      <section id="demo" className="py-20 fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4 text-lg px-4 py-2">Живая демонстрация</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Попробуй прямо сейчас
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Интерактивные примеры работы HTML, CSS и JavaScript
             </p>
           </div>
@@ -283,7 +299,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-gray-600">Наведи на кнопку и нажми:</p>
+                <p className="text-gray-300">Наведи на кнопку и нажми:</p>
                 <Button 
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
                   onClick={() => alert('🎉 Отлично! Ты научился создавать интерактивные кнопки!')}
@@ -301,7 +317,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-gray-600">Текст с градиентом:</p>
+                <p className="text-gray-300">Текст с градиентом:</p>
                 <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-200% animate-gradient bg-clip-text text-transparent">
                   Живой градиент!
                 </div>
@@ -316,7 +332,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-gray-600">Элемент с анимацией:</p>
+                <p className="text-gray-300">Элемент с анимацией:</p>
                 <div className="flex justify-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl animate-float shadow-xl"></div>
                 </div>
@@ -327,14 +343,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 bg-white/50 backdrop-blur-sm fade-on-scroll">
+      <section id="projects" className="py-20 bg-black/30 backdrop-blur-sm fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4 text-lg px-4 py-2">Готовые проекты</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">
               Практические задания
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Создай реальные проекты и пополни портфолио
             </p>
           </div>
@@ -376,7 +392,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </section>
 
       {/* Resources Section */}
-      <section className="py-20 fade-on-scroll">
+      <section id="resources" className="py-20 fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 shadow-2xl overflow-hidden">
@@ -398,7 +414,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">HTML</h3>
-                        <p className="text-gray-600">Структура и разметка страницы, семантические теги</p>
+                        <p className="text-gray-300">Структура и разметка страницы, семантические теги</p>
                       </div>
                     </div>
 
@@ -408,7 +424,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">CSS</h3>
-                        <p className="text-gray-600">Стилизация, анимации, адаптивный дизайн</p>
+                        <p className="text-gray-300">Стилизация, анимации, адаптивный дизайн</p>
                       </div>
                     </div>
 
@@ -418,7 +434,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">JavaScript</h3>
-                        <p className="text-gray-600">Интерактивность, работа с DOM, события</p>
+                        <p className="text-gray-300">Интерактивность, работа с DOM, события</p>
                       </div>
                     </div>
                   </div>
@@ -430,7 +446,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">Адаптивность</h3>
-                        <p className="text-gray-600">Сайты для всех устройств и экранов</p>
+                        <p className="text-gray-300">Сайты для всех устройств и экранов</p>
                       </div>
                     </div>
 
@@ -440,7 +456,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">Публикация</h3>
-                        <p className="text-gray-600">Хостинг, домены, деплой проектов</p>
+                        <p className="text-gray-300">Хостинг, домены, деплой проектов</p>
                       </div>
                     </div>
 
@@ -450,7 +466,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">Оптимизация</h3>
-                        <p className="text-gray-600">Скорость загрузки, SEO, производительность</p>
+                        <p className="text-gray-300">Скорость загрузки, SEO, производительность</p>
                       </div>
                     </div>
                   </div>
@@ -462,7 +478,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-600 fade-on-scroll">
+      <section id="contact" className="py-20 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-600 fade-on-scroll">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white space-y-6">
             <Badge className="bg-white/20 text-white border-white/30 text-lg px-6 py-2 backdrop-blur-sm">
@@ -475,7 +491,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
               Присоединяйся к тысячам разработчиков, которые начали свой путь в веб-разработке
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-6">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-white/90 text-lg px-8 py-6 shadow-2xl hover:scale-105 transition-transform">
+              <Button 
+                size="lg" 
+                className="bg-white text-purple-600 hover:bg-white/90 text-lg px-8 py-6 shadow-2xl hover:scale-105 transition-transform"
+                onClick={() => scrollToSection('steps')}
+              >
                 <Icon name="Rocket" className="mr-2" size={20} />
                 Начать обучение
               </Button>
